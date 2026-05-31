@@ -68,7 +68,19 @@
                   widget: 'object',
                   fields: [
                     { label: 'หัวข้อ', name: 'heading', widget: 'string' },
-                    { label: 'คำอธิบาย', name: 'subheading', widget: 'string' }
+                    { label: 'คำอธิบาย', name: 'subheading', widget: 'string' },
+                    {
+                      label: '🖼️ รูปภาพผลงาน',
+                      name: 'images',
+                      widget: 'object',
+                      fields: [
+                        { label: 'รูป 1 — Séra Skin', name: 'w1', widget: 'image', required: false },
+                        { label: 'รูป 2 — The Grove Clinic', name: 'w2', widget: 'image', required: false },
+                        { label: 'รูป 3 — Aalto Resorts', name: 'w3', widget: 'image', required: false },
+                        { label: 'รูป 4 — Casa Pelo', name: 'w4', widget: 'image', required: false },
+                        { label: 'รูป 5 — Halcyon', name: 'w5', widget: 'image', required: false }
+                      ]
+                    }
                   ]
                 },
                 {

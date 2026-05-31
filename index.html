@@ -839,6 +839,20 @@ fetch('/content.json').then(function(r){ return r.json(); }).then(function(c){
       if(r) r.textContent = t.role;
     });
   }
+  /* Work images */
+  if(c.work && c.work.images) {
+    ['w1','w2','w3','w4','w5'].forEach(function(id) {
+      var url = c.work.images[id];
+      if(url) {
+        var slot = document.getElementById('digi-' + id);
+        if(slot) {
+          slot.style.backgroundImage = 'url(' + url + ')';
+          slot.style.backgroundSize = 'cover';
+          slot.style.backgroundPosition = 'center';
+        }
+      }
+    });
+  }
   /* Title */
   if(c.site && c.site.title) document.title = c.site.title;
 });

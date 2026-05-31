@@ -40,7 +40,8 @@
   ],
   "work": {
     "heading": "Selected Work",
-    "subheading": "Stories that move product, perception & people."
+    "subheading": "Stories that move product, perception & people.",
+    "images": { "w1": "", "w2": "", "w3": "", "w4": "", "w5": "" }
   },
   "testimonials": [
     {
