@@ -49,6 +49,16 @@
       "w5": ""
     }
   },
+  "services": [
+    { "name": "Brand", "em": "Films", "desc": "Signature hero films that define how a brand feels." },
+    { "name": "Commercial", "em": "Production", "desc": "Broadcast-grade TVCs and digital spots, fully produced." },
+    { "name": "Social", "em": "Campaigns", "desc": "Platform-native content built to stop the scroll." },
+    { "name": "AI Content", "em": "Production", "desc": "AI-enhanced visuals that scale a campaign without losing craft." },
+    { "name": "Luxury", "em": "Photography", "desc": "Editorial stills for product, place and people." },
+    { "name": "Hospitality", "em": "Storytelling", "desc": "Films that sell the feeling of a place before arrival." },
+    { "name": "Performance", "em": "Creative", "desc": "Conversion-led variants, tested and iterated." },
+    { "name": "Creative", "em": "Direction", "desc": "The through-line that holds every asset together." }
+  ],
   "testimonials": [
     {
       "quote": "Every frame looked like the brand we always said we were. DIGI made it real — and it converted.",

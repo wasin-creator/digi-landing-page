@@ -570,14 +570,14 @@ image-slot {
         <p class="lead" data-reveal data-delay="2">From the first concept to the final cut and every channel it lives on — one studio, one standard.</p>
       </div>
       <div class="svc__list">
-        <div class="svc__row" data-reveal><span class="idx">01</span><span class="svc__name">Brand <em>Films</em></span><span class="svc__desc">Signature hero films that define how a brand feels.</span></div>
-        <div class="svc__row" data-reveal><span class="idx">02</span><span class="svc__name">Commercial <em>Production</em></span><span class="svc__desc">Broadcast-grade TVCs and digital spots, fully produced.</span></div>
-        <div class="svc__row" data-reveal><span class="idx">03</span><span class="svc__name">Social <em>Campaigns</em></span><span class="svc__desc">Platform-native content built to stop the scroll.</span></div>
-        <div class="svc__row" data-reveal><span class="idx">04</span><span class="svc__name">AI Content <em>Production</em></span><span class="svc__desc">AI-enhanced visuals that scale a campaign without losing craft.</span></div>
-        <div class="svc__row" data-reveal><span class="idx">05</span><span class="svc__name">Luxury <em>Photography</em></span><span class="svc__desc">Editorial stills for product, place and people.</span></div>
-        <div class="svc__row" data-reveal><span class="idx">06</span><span class="svc__name">Hospitality <em>Storytelling</em></span><span class="svc__desc">Films that sell the feeling of a place before arrival.</span></div>
-        <div class="svc__row" data-reveal><span class="idx">07</span><span class="svc__name">Performance <em>Creative</em></span><span class="svc__desc">Conversion-led variants, tested and iterated.</span></div>
-        <div class="svc__row" data-reveal><span class="idx">08</span><span class="svc__name">Creative <em>Direction</em></span><span class="svc__desc">The through-line that holds every asset together.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">01</span><span class="svc__name"><span data-cms-svc-name="0">Brand</span> <em data-cms-svc-em="0">Films</em></span><span class="svc__desc" data-cms-svc-desc="0">Signature hero films that define how a brand feels.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">02</span><span class="svc__name"><span data-cms-svc-name="1">Commercial</span> <em data-cms-svc-em="1">Production</em></span><span class="svc__desc" data-cms-svc-desc="1">Broadcast-grade TVCs and digital spots, fully produced.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">03</span><span class="svc__name"><span data-cms-svc-name="2">Social</span> <em data-cms-svc-em="2">Campaigns</em></span><span class="svc__desc" data-cms-svc-desc="2">Platform-native content built to stop the scroll.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">04</span><span class="svc__name"><span data-cms-svc-name="3">AI Content</span> <em data-cms-svc-em="3">Production</em></span><span class="svc__desc" data-cms-svc-desc="3">AI-enhanced visuals that scale a campaign without losing craft.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">05</span><span class="svc__name"><span data-cms-svc-name="4">Luxury</span> <em data-cms-svc-em="4">Photography</em></span><span class="svc__desc" data-cms-svc-desc="4">Editorial stills for product, place and people.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">06</span><span class="svc__name"><span data-cms-svc-name="5">Hospitality</span> <em data-cms-svc-em="5">Storytelling</em></span><span class="svc__desc" data-cms-svc-desc="5">Films that sell the feeling of a place before arrival.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">07</span><span class="svc__name"><span data-cms-svc-name="6">Performance</span> <em data-cms-svc-em="6">Creative</em></span><span class="svc__desc" data-cms-svc-desc="6">Conversion-led variants, tested and iterated.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">08</span><span class="svc__name"><span data-cms-svc-name="7">Creative</span> <em data-cms-svc-em="7">Direction</em></span><span class="svc__desc" data-cms-svc-desc="7">The through-line that holds every asset together.</span></div>
       </div>
     </div>
   </section>
@@ -851,6 +851,17 @@ fetch('/content.json').then(function(r){ return r.json(); }).then(function(c){
           slot.style.backgroundPosition = 'center';
         }
       }
+    });
+  }
+  /* Services */
+  if(c.services) {
+    c.services.forEach(function(s, i) {
+      var n = document.querySelector('[data-cms-svc-name="'+i+'"]');
+      var e = document.querySelector('[data-cms-svc-em="'+i+'"]');
+      var d = document.querySelector('[data-cms-svc-desc="'+i+'"]');
+      if(n) n.textContent = s.name;
+      if(e) e.textContent = s.em;
+      if(d) d.textContent = s.desc;
     });
   }
   /* Title */
