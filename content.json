@@ -1,11 +1,38 @@
 {
+  "nav": {
+    "cta_text": "Book a Call",
+    "cta_url": "#contact"
+  },
   "site": {
     "title": "DIGI — Beauty, Wellness & Hospitality Production",
     "description": "DIGI — Beauty, Wellness & Hospitality Production"
   },
-  "nav": {
-    "cta_text": "Book a Call",
-    "cta_url": "#contact"
+  "work": {
+    "heading": "Selected Work",
+    "subheading": "Stories that move product, perception & people.",
+    "images": {
+      "w1": "",
+      "w2": "",
+      "w3": "",
+      "w4": "",
+      "w5": ""
+    }
+  },
+  "testimonials": [
+    {
+      "quote": "Every frame looked like the brand we always said we were. DIGI made it real — and it converted.",
+      "author": "Idris Calloway",
+      "role": "CMO, Aalto Resorts"
+    },
+    {
+      "quote": "Every frame captures the true essence of our brand. DIGI didn't just make a video; they built a digital ecosystem that made our premium wellness services feel inevitable.\"",
+      "role": "Marketing Manager ",
+      "author": "GFC"
+    }
+  ],
+  "trust": {
+    "label": "Trusted by brands that sell on feeling",
+    "cta": "See the work"
   },
   "hero": {
     "tagline": "Beauty · Wellness · Hospitality",
@@ -16,10 +43,49 @@
     "cta_primary": "Book Discovery Call",
     "cta_secondary": "View Portfolio"
   },
-  "trust": {
-    "label": "Trusted by brands that sell on feeling",
-    "cta": "See the work"
+  "footer": {
+    "tagline": "Beauty, Wellness & Hospitality Production. We make premium brands feel inevitable.",
+    "email": "hello@digi.co.th",
+    "copyright": "© 2026 DigiOne (Thailand) Co., Ltd. All rights reserved.",
+    "sub": "Beauty · Wellness · Hospitality"
   },
+  "services": [
+    {
+      "name": "YouTube Podcast & ",
+      "em": "Expert Talk",
+      "desc": "We produce \"Expert Talk\" podcasts and multi-format campaigns that turn views into trust. Position your brand as a \"Real Expert\" "
+    },
+    {
+      "name": "Social",
+      "em": "Campaigns",
+      "desc": "Platform-native content built to stop the scroll."
+    },
+    {
+      "name": "AI Content",
+      "em": "Production",
+      "desc": "AI-enhanced visuals that scale a campaign without losing craft."
+    },
+    {
+      "name": "Luxury",
+      "em": "Photography",
+      "desc": "Editorial stills for product, place and people."
+    },
+    {
+      "name": "Hospitality",
+      "em": "Storytelling",
+      "desc": "Films that sell the feeling of a place before arrival."
+    },
+    {
+      "name": "Performance",
+      "em": "Creative",
+      "desc": "Conversion-led variants, tested and iterated."
+    },
+    {
+      "name": "Creative",
+      "em": "Direction",
+      "desc": "The through-line that holds every asset together."
+    }
+  ],
   "stats": [
     {
       "number": "120+",
@@ -37,44 +103,5 @@
       "number": "91%",
       "label": "Of clients return for a second production"
     }
-  ],
-  "work": {
-    "heading": "Selected Work",
-    "subheading": "Stories that move product, perception & people.",
-    "images": {
-      "w1": "",
-      "w2": "",
-      "w3": "",
-      "w4": "",
-      "w5": ""
-    }
-  },
-  "services": [
-    { "name": "Brand", "em": "Films", "desc": "Signature hero films that define how a brand feels." },
-    { "name": "Commercial", "em": "Production", "desc": "Broadcast-grade TVCs and digital spots, fully produced." },
-    { "name": "Social", "em": "Campaigns", "desc": "Platform-native content built to stop the scroll." },
-    { "name": "AI Content", "em": "Production", "desc": "AI-enhanced visuals that scale a campaign without losing craft." },
-    { "name": "Luxury", "em": "Photography", "desc": "Editorial stills for product, place and people." },
-    { "name": "Hospitality", "em": "Storytelling", "desc": "Films that sell the feeling of a place before arrival." },
-    { "name": "Performance", "em": "Creative", "desc": "Conversion-led variants, tested and iterated." },
-    { "name": "Creative", "em": "Direction", "desc": "The through-line that holds every asset together." }
-  ],
-  "testimonials": [
-    {
-      "quote": "Every frame looked like the brand we always said we were. DIGI made it real — and it converted.",
-      "author": "Idris Calloway",
-      "role": "CMO, Aalto Resorts"
-    },
-    {
-      "quote": "Every frame captures the true essence of our brand. DIGI didn't just make a video; they built a digital ecosystem that made our premium wellness services feel inevitable.\"",
-      "role": "Marketing Manager ",
-      "author": "GFC"
-    }
-  ],
-  "footer": {
-    "tagline": "Beauty, Wellness & Hospitality Production. We make premium brands feel inevitable.",
-    "email": "hello@digi.co.th",
-    "copyright": "© 2026 DigiOne (Thailand) Co., Ltd. All rights reserved.",
-    "sub": "Beauty · Wellness · Hospitality"
-  }
+  ]
 }
