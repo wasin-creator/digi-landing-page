@@ -9,8 +9,8 @@
   },
   "hero": {
     "tagline": "Beauty · Wellness · Hospitality",
-    "headline_line1": "Cinematic storytelling for beauty, wellness &",
-    "headline_em": "hospitality",
+    "headline_line1": "Social Media & Digital storytelling for beauty, ",
+    "headline_em": "wellness & hospitality",
     "headline_line2": "brands.",
     "subtext": "We produce the films, campaigns and imagery that make premium brands feel inevitable — and convert.",
     "cta_primary": "Book Discovery Call",
@@ -21,10 +21,22 @@
     "cta": "See the work"
   },
   "stats": [
-    { "number": "120+", "label": "Campaigns produced across beauty, wellness & hospitality" },
-    { "number": "3.8×", "label": "Average lift in engagement on branded films" },
-    { "number": "24", "label": "Countries we've filmed in, from clinics to coastlines" },
-    { "number": "91%", "label": "Of clients return for a second production" }
+    {
+      "number": "120+",
+      "label": "Campaigns produced across beauty, wellness & hospitality"
+    },
+    {
+      "number": "3.8×",
+      "label": "Average lift in engagement on branded films"
+    },
+    {
+      "number": "24",
+      "label": "Countries we've filmed in, from clinics to coastlines"
+    },
+    {
+      "number": "91%",
+      "label": "Of clients return for a second production"
+    }
   ],
   "work": {
     "heading": "Selected Work",
