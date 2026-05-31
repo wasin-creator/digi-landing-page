@@ -3,6 +3,24 @@
     "cta_text": "Book a Call",
     "cta_url": "#contact"
   },
+  "youtube": {
+    "heading": "YouTube Channel",
+    "view_all_url": "https://www.youtube.com/@digiproduction",
+    "videos": [
+      {
+        "id": "w9Vw623sxvI&t=1202s",
+        "title": "Jito x ทำให้เด็กมันส์ดู | Jito x เอแคลร์"
+      },
+      {
+        "id": "yCQCWnIv3Yo&t=842s",
+        "title": "TasteToTalk : รสชาติความรักที่ไม่เคยบอกใครกับซุปตาร์‘โย อรุณี’ "
+      },
+      {
+        "id": "EgVnV3jNAwI",
+        "title": "ตามทันปะ | EP.20 ตัวตนที่ชัด คือสิ่งที่คนจำ สู่ Personal Branding"
+      }
+    ]
+  },
   "site": {
     "title": "DIGI — Beauty, Wellness & Hospitality Production",
     "description": "DIGI — Beauty, Wellness & Hospitality Production"
@@ -86,15 +104,6 @@
       "desc": "The through-line that holds every asset together."
     }
   ],
-  "youtube": {
-    "heading": "YouTube Channel",
-    "view_all_url": "https://www.youtube.com/@digiproduction",
-    "videos": [
-      { "id": "", "title": "Behind the Campaign — Séra Skin Launch Film" },
-      { "id": "", "title": "How We Shoot Luxury Hospitality Content in 48 Hours" },
-      { "id": "", "title": "AI-Enhanced Beauty Production: Before & After" }
-    ]
-  },
   "stats": [
     {
       "number": "120+",
