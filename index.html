@@ -1,0 +1,813 @@
+
+<!doctype html>
+<html lang="en" class="anim">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIGI — Beauty, Wellness & Hospitality Production</title>
+<meta name="description" content="DIGI is a cinematic production studio for beauty, wellness and hospitality brands.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f317f'/%3E%3Ctext x='4' y='23' font-family='system-ui,sans-serif' font-weight='800' font-size='20' fill='white'%3ED%3C/text%3E%3C/svg%3E">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   DIGI — Beauty, Wellness & Hospitality Production
+   Color system: Navy #0f317f + Coral #edaaa0
+   Logo: knockout white on navy
+   ═══════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+:root {
+  /* ── Navy Surfaces ── */
+  --navy:        #0f317f;
+  --navy-deep:   #0a2258;
+  --navy-2:      #152f6e;
+  --navy-3:      #1a3a85;
+  --navy-light:  #1e4599;
+
+  /* ── Light Surfaces ── */
+  --ivory:       #f8f5f2;
+  --ivory-2:     #f0ebe4;
+  --white:       #ffffff;
+
+  /* ── Ink on dark ── */
+  --on-dark:     #ffffff;
+  --on-dark-mut: rgba(255,255,255,0.62);
+  --on-dark-fnt: rgba(255,255,255,0.45);
+
+  /* ── Ink on light ── */
+  --on-light:     #0f317f;
+  --on-light-mut: rgba(15,49,127,0.55);
+
+  /* ── Accent: Coral ── */
+  --coral:       #edaaa0;
+  --coral-light: #f5cec7;
+  --coral-dark:  #d9897e;
+  --coral-glow:  rgba(237,170,160,0.25);
+
+  /* ── Hairlines ── */
+  --line-dark:   rgba(255,255,255,0.12);
+  --line-dark-2: rgba(255,255,255,0.24);
+  --line-light:  rgba(15,49,127,0.14);
+
+  /* ── Type ── */
+  --sans: "Hanken Grotesk", "Suisse Intl", "Neue Montreal", system-ui, sans-serif;
+
+  /* ── Motion ── */
+  --ease:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur:     0.9s;
+
+  /* ── Layout ── */
+  --pad:  clamp(20px, 5vw, 80px);
+  --maxw: 1480px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--navy);
+  color: var(--on-dark);
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+::selection { background: var(--coral); color: var(--navy); }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ── Film grain overlay ── */
+.grain {
+  position: fixed; inset: 0; z-index: 9000; pointer-events: none;
+  opacity: 0.04; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── DIGI Logo (ivory SVG — white on dark background) ── */
+.digi-logo {
+  height: 30px; width: auto;
+  transition: opacity 0.4s var(--ease), filter 0.4s var(--ease);
+}
+.digi-logo--footer {
+  height: 28px; margin-bottom: 20px;
+  opacity: 0.75;
+  transition: opacity 0.4s var(--ease);
+}
+.footer__brand:hover .digi-logo--footer { opacity: 1; }
+.nav__logo:hover .digi-logo { opacity: 1; filter: drop-shadow(0 0 8px rgba(237,170,160,0.35)); }
+
+/* Logo fallback if image fails to load */
+.digi-logo-fb {
+  display: none;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+  white-space: nowrap;
+}
+.digi-logo:not([src]), .digi-logo[src=""] { display: none; }
+.digi-logo:not([src]) ~ .digi-logo-fb,
+.digi-logo[src=""] ~ .digi-logo-fb,
+.digi-logo.error ~ .digi-logo-fb { display: inline-block; }
+
+/* ══════════ Typography ══════════ */
+.display {
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6.6vw, 6.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+.display em { font-style: italic; font-weight: 300; letter-spacing: -0.01em; }
+.h2 {
+  font-weight: 400;
+  font-size: clamp(2rem, 4.2vw, 3.7rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.h2 em { font-style: italic; font-weight: 300; }
+.lead {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--on-dark-mut);
+  font-weight: 400;
+  max-width: 46ch;
+}
+.eyebrow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-weight: 500;
+  color: var(--on-dark-mut);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85em;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px; height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+.eyebrow--plain::before { display: none; }
+.idx {
+  font-size: 0.72rem; letter-spacing: 0.2em; font-weight: 500;
+  color: var(--on-dark-fnt); font-variant-numeric: tabular-nums;
+}
+
+/* Light section variants */
+.sec--light { background: var(--ivory); color: var(--on-light); }
+.sec--light .lead { color: var(--on-light-mut); }
+.sec--light .eyebrow { color: var(--on-light-mut); }
+.sec--light .idx { color: rgba(15,49,127,0.35); }
+
+/* ══════════ Layout ══════════ */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+section { position: relative; }
+.sec-pad { padding-top: clamp(80px, 12vh, 160px); padding-bottom: clamp(80px, 12vh, 160px); }
+
+/* ══════════ Buttons ══════════ */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  font-family: var(--sans); font-size: 0.92rem; font-weight: 500; letter-spacing: 0.01em;
+  padding: 0.95em 1.7em; border-radius: 100px; cursor: pointer;
+  border: 1px solid var(--line-dark-2); color: var(--on-dark); background: transparent;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease), transform 0.5s var(--ease);
+  position: relative; overflow: hidden;
+}
+.btn .ar { width: 14px; height: 14px; transition: transform 0.5s var(--ease); }
+.btn:hover .ar { transform: translateX(4px); }
+.btn--solid { background: var(--white); color: var(--navy); border-color: var(--white); }
+.btn--solid:hover { background: var(--coral); border-color: var(--coral); color: var(--navy); }
+.btn--ghost:hover { border-color: var(--coral); color: var(--coral); }
+.sec--light .btn { border-color: var(--line-light); color: var(--on-light); }
+.sec--light .btn--solid { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.sec--light .btn--solid:hover { background: var(--coral); border-color: var(--coral); color: var(--navy); }
+.sec--light .btn--ghost:hover { border-color: var(--coral); color: var(--coral-dark); }
+
+/* Text link with animated underline */
+.tlink { display: inline-flex; align-items: center; gap: 0.5em; font-weight: 500; font-size: 0.95rem; position: relative; }
+.tlink::after { content: ""; position: absolute; left: 0; bottom: -3px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease); }
+.tlink:hover { color: var(--coral); }
+.tlink:hover::after { transform: scaleX(1); background: var(--coral); }
+
+/* ══════════ Reveal-on-scroll ══════════ */
+@keyframes digiUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.anim [data-reveal].in { animation: digiUp 0.9s var(--ease); }
+.anim [data-reveal][data-delay="1"].in { animation-delay: 0.08s; }
+.anim [data-reveal][data-delay="2"].in { animation-delay: 0.16s; }
+.anim [data-reveal][data-delay="3"].in { animation-delay: 0.24s; }
+.anim [data-reveal][data-delay="4"].in { animation-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) { .anim [data-reveal].in { animation: none; } }
+
+/* ══════════ Image-slot navy-toned placeholders ══════════ */
+image-slot {
+  display: inline-block; position: relative;
+  background-color: #162d6e;
+  background-image:
+    radial-gradient(120% 110% at 28% 18%, rgba(237,170,160,0.10), transparent 56%),
+    radial-gradient(120% 120% at 88% 92%, rgba(237,170,160,0.08), transparent 60%),
+    linear-gradient(135deg, #1a3478, #0f2a65 70%);
+}
+.case:nth-child(2) image-slot { background-image: radial-gradient(120% 120% at 75% 20%, rgba(237,170,160,0.12), transparent 60%), linear-gradient(135deg,#193073,#0e2660); }
+.case:nth-child(3) image-slot { background-image: radial-gradient(120% 120% at 20% 80%, rgba(237,170,160,0.10), transparent 60%), linear-gradient(160deg,#1b3275,#0f265b); }
+.case:nth-child(4) image-slot { background-image: radial-gradient(120% 120% at 50% 30%, rgba(255,255,255,0.04), transparent 60%), linear-gradient(135deg,#182e6c,#0d2355); }
+.case:nth-child(5) image-slot { background-image: radial-gradient(120% 120% at 80% 80%, rgba(237,170,160,0.10), transparent 60%), linear-gradient(135deg,#1a3174,#0e2558); }
+
+/* ══════════ NAV ══════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px var(--pad);
+  transition: background 0.6s var(--ease), padding 0.6s var(--ease), border-color 0.6s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(10,34,88,0.78); backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  padding: 14px var(--pad); border-bottom-color: var(--line-dark);
+}
+.nav__logo { display: flex; align-items: center; gap: 12px; position: relative; }
+.nav__links { display: flex; align-items: center; gap: 34px; }
+.nav__links a { font-size: 0.86rem; letter-spacing: 0.04em; color: var(--on-dark-mut); transition: color 0.4s var(--ease); }
+.nav__links a:hover { color: var(--on-dark); }
+.nav__right { display: flex; align-items: center; gap: 22px; }
+.nav .btn { padding: 0.7em 1.3em; font-size: 0.84rem; }
+.nav__burger { display: none; width: 26px; height: 14px; position: relative; background: none; border: 0; cursor: pointer; }
+.nav__burger i { position: absolute; left: 0; width: 100%; height: 1.5px; background: var(--on-dark); transition: transform 0.4s var(--ease), opacity 0.4s; }
+.nav__burger i:first-child { top: 2px; } .nav__burger i:last-child { bottom: 2px; }
+@media (max-width: 880px) {
+  .nav__links, .nav__right .btn { display: none; }
+  .nav__burger { display: block; }
+}
+
+/* ══════════ HERO ══════════ */
+.hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; display: flex; align-items: flex-end; }
+.hero__media { position: absolute; inset: 0; z-index: 0; }
+.hero__media image-slot { width: 100%; height: 100%; }
+.hero__media::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(15,49,127,0.55) 0%, rgba(15,49,127,0.12) 26%, rgba(15,49,127,0.12) 52%, rgba(15,49,127,0.90) 100%),
+    radial-gradient(120% 80% at 50% 120%, rgba(10,34,88,0.6), transparent 60%);
+}
+.hero__bars { position: absolute; left: 0; right: 0; z-index: 2; height: clamp(28px, 5vh, 60px); background: var(--navy); pointer-events: none; }
+.hero__bars--top { top: 0; } .hero__bars--bot { bottom: 0; }
+.hero__inner { position: relative; z-index: 3; width: 100%; padding-bottom: clamp(70px, 11vh, 130px); }
+.hero__eyebrow { margin-bottom: 26px; }
+.hero h1 { max-width: 17ch; }
+.hero__sub { margin: 28px 0 38px; max-width: 40ch; color: var(--on-dark-mut); font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
+.hero__cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero__scroll { position: absolute; right: var(--pad); bottom: clamp(70px, 11vh, 130px); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--on-dark-fnt); }
+.hero__scroll .ln { width: 1px; height: 54px; background: linear-gradient(var(--coral), transparent); position: relative; overflow: hidden; }
+.hero__scroll .ln::after { content: ""; position: absolute; top: -54px; left: 0; width: 100%; height: 54px; background: var(--coral); animation: scrolldot 2.4s var(--ease-io) infinite; }
+@keyframes scrolldot { 0% { top: -54px; } 60%,100% { top: 54px; } }
+.hero__scroll span { writing-mode: vertical-rl; font-size: 0.62rem; letter-spacing: 0.34em; text-transform: uppercase; }
+@media (max-width: 880px) { .hero__scroll { display: none; } }
+
+/* ══════════ TRUST / METRICS ══════════ */
+.trust { background: var(--navy-2); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.trust__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 56px; }
+.logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 20px; align-items: center; }
+.logos span {
+  font-size: clamp(0.85rem, 1.3vw, 1.15rem); letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 500; color: var(--on-dark-mut); text-align: center; opacity: 0.72;
+  transition: opacity 0.5s var(--ease), color 0.5s var(--ease); white-space: nowrap;
+}
+.logos span:hover { opacity: 1; color: var(--on-dark); }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 80px; background: var(--line-dark); border: 1px solid var(--line-dark); }
+.metric { background: var(--navy-2); padding: 40px 30px; }
+.metric__n { font-size: clamp(2.4rem, 4.4vw, 3.8rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
+.metric__n em { font-style: normal; color: var(--coral); }
+.metric__l { margin-top: 14px; font-size: 0.82rem; color: var(--on-dark-mut); letter-spacing: 0.02em; line-height: 1.4; }
+@media (max-width: 880px) { .logos { grid-template-columns: repeat(3, 1fr); } .metrics { grid-template-columns: repeat(2, 1fr); } }
+
+/* ══════════ PORTFOLIO ══════════ */
+.work__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 48px; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; }
+.filter { font-size: 0.8rem; letter-spacing: 0.04em; padding: 0.55em 1.1em; border-radius: 100px; border: 1px solid var(--line-dark-2); color: var(--on-dark-mut); background: transparent; cursor: pointer; transition: all 0.4s var(--ease); white-space: nowrap; }
+.filter:hover { color: var(--on-dark); border-color: var(--on-dark-mut); }
+.filter.active { background: var(--white); color: var(--navy); border-color: var(--white); }
+.work__grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2vw, 28px); }
+.case { grid-column: span 6; transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.case--wide { grid-column: span 12; }
+.case--hidden { display: none; }
+.case__media { position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 4/5; }
+.case--wide .case__media { aspect-ratio: 16/8; }
+.case__media image-slot { width: 100%; height: 100%; transition: transform 1.4s var(--ease); }
+.case:hover .case__media image-slot { transform: scale(1.04); }
+.case__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(15,49,127,0.7)); opacity: 0; transition: opacity 0.6s var(--ease); pointer-events: none; }
+.case:hover .case__media::after { opacity: 1; }
+.case__tag { position: absolute; top: 18px; left: 18px; z-index: 2; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white); padding: 0.5em 0.9em; border: 1px solid rgba(255,255,255,0.4); border-radius: 100px; backdrop-filter: blur(6px); }
+.case__view { position: absolute; bottom: 18px; right: 18px; z-index: 2; opacity: 0; transform: translateY(8px); transition: all 0.6s var(--ease); color: var(--white); }
+.case:hover .case__view { opacity: 1; transform: none; }
+.case__foot { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 2px 0; }
+.case__title { font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 400; letter-spacing: -0.02em; }
+.case__title em { font-style: italic; font-weight: 300; }
+.case__res { font-size: 0.82rem; color: var(--on-dark-mut); letter-spacing: 0.02em; white-space: nowrap; }
+.case__res b { color: var(--coral); font-weight: 500; }
+@media (max-width: 760px) { .case, .case--wide { grid-column: span 12; } .case__media { aspect-ratio: 4/5; } }
+
+/* ══════════ SERVICES ══════════ */
+.svc__top { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: end; margin-bottom: 64px; }
+.svc__list { border-top: 1px solid var(--line-dark); }
+.svc__row { display: grid; grid-template-columns: 56px 1fr auto; gap: 24px; align-items: center; padding: clamp(22px, 3vw, 36px) 4px; border-bottom: 1px solid var(--line-dark); cursor: default; transition: padding-left 0.6s var(--ease), background 0.6s var(--ease); }
+.svc__row:hover { padding-left: 22px; }
+.svc__row:hover .svc__name { color: var(--on-dark); }
+.svc__row:hover .svc__name em { color: var(--coral); }
+.svc__name { font-size: clamp(1.5rem, 3.2vw, 2.7rem); font-weight: 400; letter-spacing: -0.02em; color: rgba(255,255,255,0.72); transition: color 0.5s var(--ease); }
+.svc__name em { font-style: italic; font-weight: 300; transition: color 0.5s var(--ease); }
+.svc__desc { font-size: 0.9rem; color: var(--on-dark-mut); max-width: 30ch; text-align: right; }
+@media (max-width: 760px) { .svc__top { grid-template-columns: 1fr; } .svc__row { grid-template-columns: 38px 1fr; } .svc__desc { display: none; } }
+
+/* ══════════ IMPACT (light) ══════════ */
+.impact__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
+.impact__list { display: flex; flex-direction: column; }
+.impact__item { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: baseline; padding: 26px 0; border-top: 1px solid var(--line-light); }
+.impact__item:last-child { border-bottom: 1px solid var(--line-light); }
+.impact__n { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
+.impact__n em { font-style: normal; color: var(--coral-dark); }
+.impact__t { font-size: 1.05rem; }
+.impact__t b { font-weight: 500; }
+.impact__t span { display: block; color: var(--on-light-mut); font-size: 0.9rem; margin-top: 3px; }
+@media (max-width: 860px) { .impact__grid { grid-template-columns: 1fr; } }
+
+/* ══════════ PROCESS ══════════ */
+.proc__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); margin-top: 60px; }
+.proc__step { background: var(--navy); padding: 40px 32px 48px; min-height: 280px; display: flex; flex-direction: column; transition: background 0.6s var(--ease); }
+.proc__step:hover { background: var(--navy-2); }
+.proc__num { font-size: 0.72rem; color: var(--coral); letter-spacing: 0.2em; margin-bottom: auto; }
+.proc__name { font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 400; letter-spacing: -0.02em; margin: 60px 0 14px; }
+.proc__txt { font-size: 0.9rem; color: var(--on-dark-mut); line-height: 1.5; }
+@media (max-width: 860px) { .proc__grid { grid-template-columns: 1fr 1fr; } .proc__step { min-height: 220px; } }
+@media (max-width: 520px) { .proc__grid { grid-template-columns: 1fr; } }
+
+/* ══════════ TESTIMONIALS ══════════ */
+.quote__feature { max-width: 22ch; }
+.quote__big { font-size: clamp(1.8rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.12; letter-spacing: -0.02em; }
+.quote__big em { font-style: italic; }
+.quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); margin-top: 70px; }
+.quote { background: var(--navy); padding: 44px 40px; display: flex; flex-direction: column; gap: 26px; }
+.quote p { font-size: 1.15rem; line-height: 1.5; font-weight: 300; }
+.quote p em { font-style: italic; color: var(--on-dark); }
+.quote__by { display: flex; align-items: center; gap: 14px; margin-top: auto; }
+.quote__av { width: 42px; height: 42px; border-radius: 50%; overflow: hidden; flex: none; }
+.quote__av image-slot { width: 100%; height: 100%; }
+.quote__by b { font-weight: 500; font-size: 0.92rem; display: block; }
+.quote__by span { font-size: 0.8rem; color: var(--on-dark-mut); }
+@media (max-width: 760px) { .quotes { grid-template-columns: 1fr; } }
+
+/* ══════════ FINAL CTA ══════════ */
+.final { position: relative; overflow: hidden; text-align: center; }
+.final__media { position: absolute; inset: 0; z-index: 0; }
+.final__media image-slot { width: 100%; height: 100%; }
+.final::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(90% 90% at 50% 50%, rgba(15,49,127,0.65), rgba(10,34,88,0.94)); }
+.final__inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 30px; padding: clamp(110px, 18vh, 220px) 0; }
+.final h2 { max-width: 18ch; }
+.final .lead { color: var(--on-dark-mut); margin: 0 auto; text-align: center; }
+.final__cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+.final__glow { position: absolute; z-index: 1; width: 700px; height: 700px; left: 50%; top: 50%; transform: translate(-50%,-50%); background: radial-gradient(circle, var(--coral-glow), transparent 60%); pointer-events: none; }
+
+/* ══════════ FOOTER ══════════ */
+.footer { background: var(--navy-deep); border-top: 1px solid var(--line-dark); }
+.footer__top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 70px; }
+.footer__brand svg { height: 34px; margin-bottom: 22px; }
+.footer__brand p { color: var(--on-dark-mut); max-width: 34ch; font-size: 0.95rem; }
+.footer__col h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.24em; color: var(--on-dark-fnt); margin: 6px 0 20px; font-weight: 500; }
+.footer__col a { display: block; padding: 7px 0; color: var(--on-dark-mut); font-size: 0.95rem; transition: color 0.4s var(--ease); }
+.footer__col a:hover { color: var(--coral); }
+.footer__bot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 30px 0; border-top: 1px solid var(--line-dark); color: var(--on-dark-fnt); font-size: 0.8rem; letter-spacing: 0.02em; }
+@media (max-width: 860px) { .footer__top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .footer__top { grid-template-columns: 1fr; } }
+
+/* ══════════ MOBILE NAV ══════════ */
+.nav__links.mob-open {
+  position: fixed; top: 0; right: 0;
+  width: 280px; height: 100vh;
+  background: var(--navy-deep);
+  flex-direction: column;
+  padding: 100px 40px 40px;
+  gap: 28px;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.4);
+  display: flex !important;
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- ════════════════ NAV ════════════════ -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="DIGI home">
+    <img
+      class="digi-logo"
+      src="digi-logo-white.svg"
+      alt="DIGI"
+      onerror="this.classList.add('error')"
+    >
+    <span class="digi-logo-fb">DIGI</span>
+  </a>
+  <nav class="nav__links" id="navLinks">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#studio">Studio</a>
+  </nav>
+  <div class="nav__right">
+    <a class="btn btn--solid" href="#contact">Book a Call <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <button class="nav__burger" id="navBurger" aria-label="Menu"><i></i><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="hero">
+    <div class="hero__media">
+      <image-slot id="digi-hero" placeholder="Drop your hero reel / film still"></image-slot>
+    </div>
+    <div class="hero__bars hero__bars--top"></div>
+    <div class="hero__bars hero__bars--bot"></div>
+    <div class="hero__inner wrap">
+      <p class="eyebrow hero__eyebrow" data-reveal>Beauty · Wellness · Hospitality</p>
+      <h1 class="display" data-reveal data-delay="1">Cinematic storytelling for beauty, wellness &amp; <em>hospitality</em> brands.</h1>
+      <p class="hero__sub" data-reveal data-delay="2">We produce the films, campaigns and imagery that make premium brands feel inevitable — and convert.</p>
+      <div class="hero__cta" data-reveal data-delay="3">
+        <a class="btn btn--solid" href="#contact">Book Discovery Call <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost" href="#work">View Portfolio</a>
+      </div>
+    </div>
+    <div class="hero__scroll"><span>Scroll</span><div class="ln"></div></div>
+  </section>
+
+  <!-- ════════════════ TRUST / METRICS ════════════════ -->
+  <section class="trust sec-pad" id="studio">
+    <div class="wrap">
+      <div class="trust__head">
+        <p class="eyebrow" data-reveal>Trusted by brands that sell on feeling</p>
+        <a class="tlink" href="#work" data-reveal>See the work <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="logos" data-reveal>
+        <span>Maison Lumé</span>
+        <span>Séra Skin</span>
+        <span>Aalto Resorts</span>
+        <span>The Grove Clinic</span>
+        <span>Oshi</span>
+        <span>Verano</span>
+        <span>Lèon &amp; Co</span>
+        <span>Halcyon</span>
+        <span>Nué Aesthetics</span>
+        <span>Casa Pelo</span>
+        <span>Ember House</span>
+        <span>Studio Mara</span>
+      </div>
+      <div class="metrics">
+        <div class="metric" data-reveal><div class="metric__n">240<em>+</em></div><div class="metric__l">Campaigns produced across beauty, wellness &amp; hospitality</div></div>
+        <div class="metric" data-reveal data-delay="1"><div class="metric__n">3.4<em>×</em></div><div class="metric__l">Average lift in engagement on branded films</div></div>
+        <div class="metric" data-reveal data-delay="2"><div class="metric__n">14</div><div class="metric__l">Countries we've filmed in, from clinics to coastlines</div></div>
+        <div class="metric" data-reveal data-delay="3"><div class="metric__n">96<em>%</em></div><div class="metric__l">Of clients return for a second production</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ PORTFOLIO ════════════════ -->
+  <section class="work sec-pad" id="work">
+    <div class="wrap">
+      <div class="work__head">
+        <div>
+          <p class="eyebrow" data-reveal>Selected Work</p>
+          <h2 class="h2" data-reveal data-delay="1" style="margin-top:18px;max-width:16ch">Stories that move product, perception &amp; people.</h2>
+        </div>
+        <div class="filters" data-reveal data-delay="2" role="tablist">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="clinics">Clinics</button>
+          <button class="filter" data-filter="skincare">Skincare</button>
+          <button class="filter" data-filter="hospitality">Hospitality</button>
+          <button class="filter" data-filter="food">Food &amp; Lifestyle</button>
+        </div>
+      </div>
+
+      <div class="work__grid">
+        <article class="case case--wide" data-cat="skincare" data-reveal>
+          <div class="case__media">
+            <span class="case__tag">Skincare</span>
+            <image-slot id="digi-w1" placeholder="Drop campaign film / still"></image-slot>
+            <a class="case__view tlink" href="#contact">View case <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="case__foot">
+            <h3 class="case__title">Séra Skin — <em>The Quiet Ritual</em></h3>
+            <p class="case__res"><b>+218%</b> campaign reach</p>
+          </div>
+        </article>
+
+        <article class="case" data-cat="clinics" data-reveal>
+          <div class="case__media">
+            <span class="case__tag">Clinics</span>
+            <image-slot id="digi-w2" placeholder="Drop clinic film / still"></image-slot>
+            <a class="case__view tlink" href="#contact">View case <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="case__foot">
+            <h3 class="case__title">The Grove Clinic</h3>
+            <p class="case__res"><b>2.1×</b> consult bookings</p>
+          </div>
+        </article>
+
+        <article class="case" data-cat="hospitality" data-reveal data-delay="1">
+          <div class="case__media">
+            <span class="case__tag">Hospitality</span>
+            <image-slot id="digi-w3" placeholder="Drop resort film / still"></image-slot>
+            <a class="case__view tlink" href="#contact">View case <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="case__foot">
+            <h3 class="case__title">Aalto Resorts</h3>
+            <p class="case__res"><b>+47%</b> direct bookings</p>
+          </div>
+        </article>
+
+        <article class="case" data-cat="food" data-reveal>
+          <div class="case__media">
+            <span class="case__tag">Food &amp; Lifestyle</span>
+            <image-slot id="digi-w4" placeholder="Drop food / lifestyle still"></image-slot>
+            <a class="case__view tlink" href="#contact">View case <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="case__foot">
+            <h3 class="case__title">Casa Pelo</h3>
+            <p class="case__res"><b>1.9M</b> organic views</p>
+          </div>
+        </article>
+
+        <article class="case" data-cat="wellness hospitality" data-reveal data-delay="1">
+          <div class="case__media">
+            <span class="case__tag">Wellness</span>
+            <image-slot id="digi-w5" placeholder="Drop wellness film / still"></image-slot>
+            <a class="case__view tlink" href="#contact">View case <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="case__foot">
+            <h3 class="case__title">Halcyon — <em>Slow Mornings</em></h3>
+            <p class="case__res"><b>+162%</b> save rate</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ SERVICES ════════════════ -->
+  <section class="svc sec-pad" id="services">
+    <div class="wrap">
+      <div class="svc__top">
+        <div>
+          <p class="eyebrow" data-reveal>What we do</p>
+          <h2 class="h2" data-reveal data-delay="1" style="margin-top:18px">Strategic creative, produced end&#8209;to&#8209;end.</h2>
+        </div>
+        <p class="lead" data-reveal data-delay="2">From the first concept to the final cut and every channel it lives on — one studio, one standard.</p>
+      </div>
+      <div class="svc__list">
+        <div class="svc__row" data-reveal><span class="idx">01</span><span class="svc__name">Brand <em>Films</em></span><span class="svc__desc">Signature hero films that define how a brand feels.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">02</span><span class="svc__name">Commercial <em>Production</em></span><span class="svc__desc">Broadcast-grade TVCs and digital spots, fully produced.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">03</span><span class="svc__name">Social <em>Campaigns</em></span><span class="svc__desc">Platform-native content built to stop the scroll.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">04</span><span class="svc__name">AI Content <em>Production</em></span><span class="svc__desc">AI-enhanced visuals that scale a campaign without losing craft.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">05</span><span class="svc__name">Luxury <em>Photography</em></span><span class="svc__desc">Editorial stills for product, place and people.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">06</span><span class="svc__name">Hospitality <em>Storytelling</em></span><span class="svc__desc">Films that sell the feeling of a place before arrival.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">07</span><span class="svc__name">Performance <em>Creative</em></span><span class="svc__desc">Conversion-led variants, tested and iterated.</span></div>
+        <div class="svc__row" data-reveal><span class="idx">08</span><span class="svc__name">Creative <em>Direction</em></span><span class="svc__desc">The through-line that holds every asset together.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ IMPACT (light section) ════════════════ -->
+  <section class="sec--light sec-pad">
+    <div class="wrap impact__grid">
+      <div data-reveal>
+        <p class="eyebrow">Why it works</p>
+        <h2 class="h2" style="margin-top:20px;max-width:15ch">Content informs. <em>Cinema</em> convinces.</h2>
+        <p class="lead" style="margin-top:24px">Premium brands aren't bought on features — they're chosen on feeling. We engineer that feeling, then point it at a business outcome.</p>
+      </div>
+      <div class="impact__list">
+        <div class="impact__item" data-reveal><div class="impact__n">+<em>62</em>%</div><div class="impact__t"><b>Higher engagement</b><span>Watch-through and saves on cinematic vs. standard content.</span></div></div>
+        <div class="impact__item" data-reveal data-delay="1"><div class="impact__n">+<em>2.3</em>×</div><div class="impact__t"><b>Better conversion</b><span>From premium perception to measurable intent.</span></div></div>
+        <div class="impact__item" data-reveal data-delay="2"><div class="impact__n">+<em>41</em>%</div><div class="impact__t"><b>Increased trust</b><span>Audiences rate brand credibility higher after the film.</span></div></div>
+        <div class="impact__item" data-reveal data-delay="3"><div class="impact__n">∞</div><div class="impact__t"><b>Emotional connection</b><span>The asset that turns a viewer into a believer.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ PROCESS ════════════════ -->
+  <section class="proc sec-pad" id="process">
+    <div class="wrap">
+      <div class="trust__head" style="margin:0">
+        <div>
+          <p class="eyebrow" data-reveal>How we work</p>
+          <h2 class="h2" data-reveal data-delay="1" style="margin-top:18px;max-width:16ch">A calm, deliberate path from idea to impact.</h2>
+        </div>
+      </div>
+      <div class="proc__grid">
+        <div class="proc__step" data-reveal><div class="proc__num">STEP 01</div><div class="proc__name">Strategy</div><p class="proc__txt">We find the truth worth telling — the positioning, audience and outcome the work must serve.</p></div>
+        <div class="proc__step" data-reveal data-delay="1"><div class="proc__num">STEP 02</div><div class="proc__name">Concept</div><p class="proc__txt">A single cinematic idea, art-directed end to end, with references, tone and a clear visual world.</p></div>
+        <div class="proc__step" data-reveal data-delay="2"><div class="proc__num">STEP 03</div><div class="proc__name">Production</div><p class="proc__txt">Crew, talent, location and post — produced to a luxury standard, on time and on budget.</p></div>
+        <div class="proc__step" data-reveal data-delay="3"><div class="proc__num">STEP 04</div><div class="proc__name">Distribution</div><p class="proc__txt">Cut for every channel and optimised for performance, so the work actually moves numbers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ TESTIMONIALS ════════════════ -->
+  <section class="sec-pad">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>In their words</p>
+      <blockquote class="quote__big quote__feature" data-reveal data-delay="1" style="margin:26px 0 0">"They didn't just film our clinic — they made people <em>feel</em> safe choosing us."</blockquote>
+      <div class="quotes">
+        <figure class="quote" data-reveal>
+          <p>"The film became the centre of our entire launch. Bookings opened and didn't slow down for a month."</p>
+          <figcaption class="quote__by">
+            <span class="quote__av"><image-slot id="digi-t1" placeholder="Photo"></image-slot></span>
+            <span><b>Amara Vance</b><span>Founder, Séra Skin</span></span>
+          </figcaption>
+        </figure>
+        <figure class="quote" data-reveal data-delay="1">
+          <p>"Every frame looked like the brand we always said we were. DIGI made it real — and it converted."</p>
+          <figcaption class="quote__by">
+            <span class="quote__av"><image-slot id="digi-t2" placeholder="Photo"></image-slot></span>
+            <span><b>Idris Calloway</b><span>CMO, Aalto Resorts</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FINAL CTA ════════════════ -->
+  <section class="final" id="contact">
+    <div class="final__media"><image-slot id="digi-cta" placeholder="Drop closing film / still"></image-slot></div>
+    <div class="final__glow"></div>
+    <div class="final__inner wrap">
+      <p class="eyebrow eyebrow--plain" data-reveal>Start your campaign</p>
+      <h2 class="display" data-reveal data-delay="1">Your brand deserves more than content.</h2>
+      <p class="lead" data-reveal data-delay="2">We create visual experiences that elevate perception, emotion and trust.</p>
+      <div class="final__cta" data-reveal data-delay="3">
+        <a class="btn btn--solid" href="mailto:hello@digi.studio">Book Discovery Call <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost" href="#work">View Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="footer sec-pad" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img
+            class="digi-logo digi-logo--footer"
+            src="digi-logo-white.svg"
+            alt="DIGI"
+            onerror="this.classList.add('error')"
+          >
+          <span class="digi-logo-fb" style="display:none">DIGI</span>
+          <p>Beauty, Wellness &amp; Hospitality Production. We make premium brands feel inevitable.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Studio</h4>
+          <a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#studio">About</a>
+        </div>
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <a href="mailto:hello@digi.studio">hello@digi.studio</a><a href="#">Instagram</a><a href="#">Vimeo</a><a href="#">LinkedIn</a>
+        </div>
+        <div class="footer__col">
+          <h4>Studios</h4>
+          <a href="#">London</a><a href="#">New York</a><a href="#contact">Start a project</a>
+        </div>
+      </div>
+      <div class="footer__bot">
+        <span>© 2026 DIGI Studio. All rights reserved.</span>
+        <span>Beauty · Wellness · Hospitality</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   DIGI — interactions: nav, reveal, parallax, filters
+   ═══════════════════════════════════════════════════ */
+(function () {
+  "use strict";
+
+  var nav = document.getElementById("nav");
+  var onScroll = function () {
+    if (window.scrollY > 40) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* Reveal on scroll */
+  var reveals = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+  var reveal = function (el) { el.classList.add("in"); };
+  var inView = function (el) {
+    var r = el.getBoundingClientRect();
+    return r.top < (window.innerHeight || document.documentElement.clientHeight) * 0.92 && r.bottom > 0;
+  };
+  var revealInView = function () {
+    for (var i = reveals.length - 1; i >= 0; i--) {
+      if (inView(reveals[i])) { reveal(reveals[i]); reveals.splice(i, 1); }
+    }
+  };
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+  window.addEventListener("scroll", revealInView, { passive: true });
+  window.addEventListener("resize", revealInView);
+  revealInView();
+  requestAnimationFrame(revealInView);
+  window.addEventListener("load", revealInView);
+  setTimeout(revealInView, 200);
+  setTimeout(revealInView, 600);
+  setTimeout(function () {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-reveal]:not(.in)"), reveal);
+  }, 1500);
+
+  /* Hero parallax */
+  var heroMedia = document.querySelector(".hero__media");
+  var heroInner = document.querySelector(".hero__inner");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (heroMedia && !reduce) {
+    var raf = null;
+    var onHero = function () {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        var y = window.scrollY;
+        if (y < window.innerHeight) {
+          heroMedia.style.transform = "scale(1.06) translateY(" + (y * 0.18) + "px)";
+          if (heroInner) {
+            heroInner.style.transform = "translateY(" + (y * -0.06) + "px)";
+            heroInner.style.opacity = String(Math.max(0, 1 - y / (window.innerHeight * 0.75)));
+          }
+        }
+        raf = null;
+      });
+    };
+    heroMedia.style.transform = "scale(1.06)";
+    window.addEventListener("scroll", onHero, { passive: true });
+  }
+
+  /* Portfolio filter */
+  var filters = document.querySelectorAll(".filter");
+  var cases = document.querySelectorAll(".case");
+  filters.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      filters.forEach(function (f) { f.classList.remove("active"); });
+      btn.classList.add("active");
+      var cat = btn.getAttribute("data-filter");
+      cases.forEach(function (c) {
+        var cats = (c.getAttribute("data-cat") || "");
+        var show = cat === "all" || cats.indexOf(cat) !== -1;
+        c.classList.toggle("case--hidden", !show);
+      });
+    });
+  });
+
+  /* Mobile burger */
+  var burger = document.getElementById("navBurger");
+  var navLinks = document.getElementById("navLinks");
+  if (burger && navLinks) {
+    burger.addEventListener("click", function () {
+      navLinks.classList.toggle("mob-open");
+    });
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("mob-open");
+      });
+    });
+  }
+
+  /* Logo error fallback */
+  document.querySelectorAll(".digi-logo").forEach(function (img) {
+    img.addEventListener("error", function () {
+      img.classList.add("error");
+      var fb = img.nextElementSibling;
+      if (fb && fb.classList.contains("digi-logo-fb")) {
+        fb.style.display = "inline-block";
+      }
+    });
+    // re-trigger check in case image loaded from cache before listener
+    if (img.complete && img.naturalWidth === 0) {
+      img.dispatchEvent(new Event("error"));
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

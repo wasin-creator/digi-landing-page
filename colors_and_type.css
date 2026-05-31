@@ -1,0 +1,254 @@
+/* ============================================================
+   KOTA — Design System Foundations
+   Colors + Typography tokens (extracted from kota.co.uk)
+   ============================================================
+   FONT NOTE: KOTA ships "PP Neue Montreal" (Pangram Pangram, paid)
+   as its primary face and "Syne" (Google Fonts, free) as a display
+   accent. PP Neue Montreal is NOT redistributable, so this system
+   substitutes "Hanken Grotesk" (Google Fonts) — a clean neo-grotesque
+   with Arial-like metrics matching KOTA's own Arial fallback stack.
+   Swap --montreal back to the licensed font in production.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap');
+
+:root {
+  /* ---- Brand core ------------------------------------------ */
+  --theme-primary:   #000000;   /* ink — text, borders, dark sections   */
+  --theme-secondary: #ffffff;   /* paper — cards, reversed text          */
+  --kota-bg:         #efefef;   /* page background (warm light grey)     */
+  --kota-bg-blur:    hsla(0,0%,100%,0.43); /* frosted panel fill         */
+  --kota-card:       #ffffff;   /* card surface                          */
+
+  /* ---- Greys / hairlines ----------------------------------- */
+  --grey-100: #f8f8f8;
+  --grey-200: #e9e9e9;          /* tag borders, dividers                 */
+  --grey-300: #d3d3d3;          /* row hover                             */
+  --grey-line: #dddddd;         /* table hairline                        */
+  --ink-30:  rgba(0,0,0,0.30);  /* soft border (mobile tags)             */
+  --ink-40:  rgba(0,0,0,0.40);  /* panel border                          */
+
+  /* ---- Accent: the "rainbow" spectrum ---------------------- */
+  /* Used ONLY on oversized stat numbers + decorative gradients. */
+  --acc-violet:  #633cc9;
+  --acc-teal:    #3b8392;
+  --acc-magenta: #cb24cc;
+  --acc-purple:  #6c3ce1;       /* blockquote bar start                  */
+  --acc-pink:    #ff34f3;       /* blockquote bar end                    */
+  --acc-glow:    #bf0cfe;       /* electric-purple radial "brand pulse"  */
+  --selection:   #f74ea1;       /* hot-pink ::selection                  */
+
+  --gradient-rainbow: linear-gradient(90deg, #633cc9, #3b8392, #cb24cc);
+  --gradient-bar:     linear-gradient(180deg, #6c3ce1, #ff34f3);
+  --glow-radial:      radial-gradient(circle, #bf0cfe 0%, rgba(191,12,254,0) 80%);
+
+  /* ---- Type families --------------------------------------- */
+  --montreal: "Hanken Grotesk", "Arial", system-ui, sans-serif; /* primary */
+  --syne:     "Syne", "Hanken Grotesk", sans-serif;             /* display accent */
+
+  /* ---- Fluid type scale (verbatim from KOTA) --------------- */
+  --fs-100: clamp(2.5rem, 7.1vw, 7.5rem);    /* hero / section display   */
+  --fs-60:  clamp(2.5rem, 4.26vw, 4.375rem); /* H2                       */
+  --fs-50:  clamp(1.875rem, 3.5vw, 60px);    /* H3 / legend              */
+  --fs-44:  clamp(1.5rem, 3vw, 2.75rem);     /* large card heading       */
+  --fs-40:  clamp(1rem, 2.5vw, 2.5rem);      /* quote                    */
+  --fs-32:  clamp(1.5rem, 1.8vw, 2.1875rem);
+  --fs-24:  clamp(1.25rem, 1.5vw, 1.5rem);   /* lead / intro             */
+
+  /* ---- Static sizes ---------------------------------------- */
+  --fs-body:  1.25rem;    /* 20px base                              */
+  --fs-prose: 1.5rem;     /* long-form paragraph (desktop)          */
+  --fs-small: 1.125rem;   /* 18px — tags, list                      */
+  --fs-eyebrow: 0.75rem;  /* uppercase label                        */
+
+  /* ---- Letter-spacing -------------------------------------- */
+  --ls-display: -0.02em;   /* tight on big type                     */
+  --ls-eyebrow:  0.093em;  /* wide on uppercase eyebrow             */
+
+  /* ---- Line-height ----------------------------------------- */
+  --lh-display: 0.9;       /* uppercase headlines                   */
+  --lh-tight:   0.95;
+  --lh-body:    1.4;
+  --lh-prose:   1.7;
+
+  /* ---- Spacing --------------------------------------------- */
+  --spacing-default: 10.5rem;
+  --spacing-default-mobile: 4.125rem;
+  --spacing-small: 4.6875rem;
+  --container-max: calc(1400px + 15%);
+  --container-pad: 7%;
+
+  /* ---- Radii (the KOTA signature: oversized top-right) ----- */
+  --r-pill:   2.0625rem;   /* buttons / chips (~33px)               */
+  --r-card:   0.9375rem;   /* default card (15px)                   */
+  --r-card-sm:0.625rem;    /* mobile card (10px)                    */
+  --r-blob-tr: 200px;      /* dramatic top-right corner on panels   */
+  --r-image-tr: 12.5rem;   /* feature image top-right swoop         */
+
+  /* ---- Borders --------------------------------------------- */
+  --bw: 2px;               /* canonical pill / control border width */
+
+  /* ---- Motion (signature easing) --------------------------- */
+  --ease-kota: cubic-bezier(0.75, 0, 0.25, 1);
+  --animation-primary:  0.4s var(--ease-kota);
+  --animation-fast:     0.2s var(--ease-kota);
+  --animation-smooth:   0.6s var(--ease-kota);
+  --animation-navigation: 1.2s var(--ease-kota);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* button pop-in   */
+}
+
+/* ============================================================
+   Semantic element styles — opt in with .kota-scope on a wrapper
+   ============================================================ */
+.kota-scope {
+  font-family: var(--montreal);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--theme-primary);
+  background-color: var(--kota-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.kota-scope ::selection { background: var(--selection); color: #000; }
+
+/* Display / headings ---------------------------------------- */
+.kota-display {            /* hero & section monoliths */
+  font-family: var(--montreal);
+  font-size: var(--fs-100);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  margin: 0;
+}
+.kota-h1, .kota-scope h1.kota {
+  font-family: var(--montreal);
+  font-size: var(--fs-100);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  margin: 0;
+}
+.kota-h2, .kota-scope h2.kota {
+  font-family: var(--montreal);
+  font-size: var(--fs-60);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--ls-display);
+  margin: 0;
+}
+.kota-h2 strong, .kota-h1 strong { font-weight: 600; }
+.kota-h3, .kota-scope h3.kota {
+  font-family: var(--montreal);
+  font-size: var(--fs-50);
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0;
+}
+.kota-eyebrow {           /* wide uppercase label */
+  font-size: var(--fs-eyebrow);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+}
+.kota-lead {              /* intro paragraph */
+  font-size: var(--fs-24);
+  font-weight: 400;
+  line-height: 1.25;
+}
+.kota-prose p {
+  font-size: var(--fs-prose);
+  line-height: var(--lh-prose);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+/* The animated rainbow stat number --------------------------- */
+.kota-stat {
+  font-family: var(--montreal);
+  font-size: clamp(6rem, 10vw, 10rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--ls-display);
+  background: var(--gradient-rainbow);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  animation: kotaRainbow 3s ease-in-out infinite;
+}
+@keyframes kotaRainbow {
+  0%   { background-position: 0%; }
+  50%  { background-position: 100%; }
+  100% { background-position: 0%; }
+}
+
+/* ============================================================
+   Controls
+   ============================================================ */
+.kota-btn {               /* pill, outline → inverts on hover */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--montreal);
+  font-size: var(--fs-24);
+  font-weight: 400;
+  line-height: 1;
+  padding: 0.8rem 1.4rem 0.9rem;
+  color: var(--theme-primary);
+  background: transparent;
+  border: var(--bw) solid var(--theme-primary);
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--animation-fast), color var(--animation-fast),
+              border-color var(--animation-fast), opacity var(--animation-fast);
+}
+.kota-btn:hover { background: var(--theme-primary); color: var(--theme-secondary); }
+.kota-btn--solid { background: var(--theme-primary); color: var(--theme-secondary); }
+.kota-btn--solid:hover { background: transparent; color: var(--theme-primary); }
+
+.kota-tag {               /* filter / category chip */
+  font-size: var(--fs-small);
+  line-height: 1;
+  color: var(--theme-primary);
+  border: var(--bw) solid var(--grey-200);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem 0.6rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--animation-fast), color var(--animation-fast),
+              border-color var(--animation-fast);
+}
+.kota-tag:hover, .kota-tag[aria-pressed="true"] {
+  background: var(--theme-primary); color: var(--theme-secondary); border-color: var(--theme-primary);
+}
+.kota-tag--ink { border-color: var(--ink-30); }        /* heavier outline */
+.kota-tag--dark {            /* solid black metadata chip (on images) */
+  font-size: 0.8125rem;
+  color: var(--theme-secondary);
+  background: var(--theme-primary);
+  border: none;
+  border-radius: 2rem;
+  padding: 8px 15px;
+}
+
+/* Cards ------------------------------------------------------ */
+.kota-card {
+  background: var(--kota-card);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.kota-card--bordered { border: var(--bw) solid var(--ink-40); }
+.kota-card--blob {           /* signature oversized top-right radius */
+  border-radius: 20px var(--r-blob-tr) 20px 20px;
+  border: var(--bw) solid var(--ink-40);
+  background: var(--kota-card);
+}
+
+/* Circular media mask (hero video, avatars) ------------------ */
+.kota-circle { border-radius: 50%; overflow: hidden; aspect-ratio: 1/1; }
