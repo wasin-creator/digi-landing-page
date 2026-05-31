@@ -365,7 +365,9 @@ image-slot {
 .yt__thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; border-radius: 3px; background: #111; }
 .yt__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s var(--ease); }
 .yt__card:hover .yt__thumb img { transform: scale(1.04); }
-.yt__thumb-fallback { position: absolute; inset: 0; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+.yt__thumb-fallback { position: absolute; inset: 0; background: linear-gradient(135deg, #111827 0%, #1e293b 60%, #0f172a 100%); }
+.yt__empty-hint { text-align: center; padding: 56px 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; letter-spacing: 0.08em; line-height: 1.8; display: none; }
+.yt__track:empty ~ * .yt__empty-hint, .yt__track-wrap:has(.yt__track:empty) .yt__empty-hint { display: block; }
 .yt__play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; }
 .yt__play-btn { width: 52px; height: 52px; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s var(--ease), transform 0.3s var(--ease); }
 .yt__card:hover .yt__play-btn { background: rgba(255,255,255,0.22); transform: scale(1.08); }
@@ -684,7 +686,11 @@ image-slot {
         </a>
       </div>
       <div class="yt__track-wrap" data-reveal data-delay="1">
-        <div class="yt__track" id="yt-track"></div>
+        <div class="yt__track" id="yt-track">
+          <div class="yt__card yt__card--placeholder"><div class="yt__thumb"><div class="yt__thumb-fallback"></div><div class="yt__play"><div class="yt__play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><p class="yt__card-title">Behind the Campaign — Séra Skin Launch Film</p></div>
+          <div class="yt__card yt__card--placeholder"><div class="yt__thumb"><div class="yt__thumb-fallback" style="background:linear-gradient(135deg,#0f172a,#1e3a5f,#0c1a2e)"></div><div class="yt__play"><div class="yt__play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><p class="yt__card-title">How We Shoot Luxury Hospitality Content in 48 Hours</p></div>
+          <div class="yt__card yt__card--placeholder"><div class="yt__thumb"><div class="yt__thumb-fallback" style="background:linear-gradient(135deg,#1a0a2e,#2d1b4e,#0d0620)"></div><div class="yt__play"><div class="yt__play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><p class="yt__card-title">AI-Enhanced Beauty Production: Before &amp; After</p></div>
+        </div>
       </div>
       <div class="yt__footer" data-reveal data-delay="2">
         <div class="yt__bar"><div class="yt__bar-fill" id="yt-bar-fill"></div></div>
@@ -955,6 +961,7 @@ fetch('/content.json').then(function(r){ return r.json(); }).then(function(c){
     if(ytViewAll && c.youtube.view_all_url) ytViewAll.href = c.youtube.view_all_url;
     var ytTrack = document.getElementById('yt-track');
     if(ytTrack && c.youtube.videos && c.youtube.videos.length) {
+      ytTrack.querySelectorAll('.yt__card--placeholder').forEach(function(el){ el.remove(); });
       ytTrack.innerHTML = '';
       c.youtube.videos.forEach(function(v) {
         var a = document.createElement('a');

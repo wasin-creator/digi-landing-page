@@ -94,6 +94,31 @@
                   ]
                 },
                 {
+                  label: '▶️ YouTube Channel',
+                  name: 'youtube',
+                  widget: 'object',
+                  fields: [
+                    { label: 'หัวข้อ Section', name: 'heading', widget: 'string' },
+                    { label: 'ลิงก์ "View All" (URL ช่อง YouTube)', name: 'view_all_url', widget: 'string' },
+                    {
+                      label: 'วิดีโอ (3 รายการ)',
+                      name: 'videos',
+                      widget: 'list',
+                      max: 6,
+                      fields: [
+                        {
+                          label: 'YouTube Video ID',
+                          name: 'id',
+                          widget: 'string',
+                          hint: 'เอา ID จาก URL: youtube.com/watch?v=▶ ABC123xyz ◀ ใส่แค่ส่วนนี้',
+                          required: false
+                        },
+                        { label: 'ชื่อวิดีโอ', name: 'title', widget: 'string' }
+                      ]
+                    }
+                  ]
+                },
+                {
                   label: '💬 รีวิว (Testimonials)',
                   name: 'testimonials',
                   widget: 'list',
