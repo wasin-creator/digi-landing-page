@@ -969,7 +969,7 @@ fetch('/content.json').then(function(r){ return r.json(); }).then(function(c){
         a.href = v.id ? 'https://www.youtube.com/watch?v=' + v.id : '#';
         a.target = '_blank'; a.rel = 'noopener';
         var thumbHtml = v.id
-          ? '<img src="https://i.ytimg.com/vi/' + v.id + '/maxresdefault.jpg" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+          ? '<img src="https://i.ytimg.com/vi/' + v.id + '/maxresdefault.jpg" alt="" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src=this.src.replace(\'maxresdefault\',\'hqdefault\')}else{this.style.display=\'none\'}">'
           : '';
         a.innerHTML =
           '<div class="yt__thumb">' +
