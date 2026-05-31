@@ -964,12 +964,14 @@ fetch('/content.json').then(function(r){ return r.json(); }).then(function(c){
       ytTrack.querySelectorAll('.yt__card--placeholder').forEach(function(el){ el.remove(); });
       ytTrack.innerHTML = '';
       c.youtube.videos.forEach(function(v) {
+        var rawId = (v.id || '').trim();
+        var cleanId = rawId.split('&')[0].split('?')[0]; /* strip &t=... or ?t=... */
         var a = document.createElement('a');
         a.className = 'yt__card';
-        a.href = v.id ? 'https://www.youtube.com/watch?v=' + v.id : '#';
+        a.href = cleanId ? 'https://www.youtube.com/watch?v=' + rawId : '#';
         a.target = '_blank'; a.rel = 'noopener';
-        var thumbHtml = v.id
-          ? '<img src="https://i.ytimg.com/vi/' + v.id + '/maxresdefault.jpg" alt="" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src=this.src.replace(\'maxresdefault\',\'hqdefault\')}else{this.style.display=\'none\'}">'
+        var thumbHtml = cleanId
+          ? '<img src="https://i.ytimg.com/vi/' + cleanId + '/maxresdefault.jpg" alt="" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src=this.src.replace(\'maxresdefault\',\'hqdefault\')}else{this.style.display=\'none\'}">'
           : '';
         a.innerHTML =
           '<div class="yt__thumb">' +
