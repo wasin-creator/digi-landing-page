@@ -12,7 +12,7 @@
     "headline_line1": "Social Media & Digital storytelling for beauty, ",
     "headline_em": "wellness & hospitality",
     "headline_line2": "brands.",
-    "subtext": "We produce the films, campaigns and imagery that make premium brands feel inevitable — and convert.",
+    "subtext": "We produce the campaigns and imagery that make premium brands feel inevitable — and convert.",
     "cta_primary": "Book Discovery Call",
     "cta_secondary": "View Portfolio"
   },
@@ -23,15 +23,15 @@
   "stats": [
     {
       "number": "120+",
-      "label": "Campaigns produced across beauty, wellness & hospitality"
+      "label": "Campaigns produced across beauty, wellness & hospitality "
     },
     {
       "number": "3.8×",
-      "label": "Average lift in engagement on branded films"
+      "label": "Average lift in engagement on Social Madia"
     },
     {
-      "number": "24",
-      "label": "Countries we've filmed in, from clinics to coastlines"
+      "number": "8",
+      "label": "Years of expertise in bringing online brands to life digitally since 2018"
     },
     {
       "number": "91%",
@@ -41,24 +41,30 @@
   "work": {
     "heading": "Selected Work",
     "subheading": "Stories that move product, perception & people.",
-    "images": { "w1": "", "w2": "", "w3": "", "w4": "", "w5": "" }
+    "images": {
+      "w1": "",
+      "w2": "",
+      "w3": "",
+      "w4": "",
+      "w5": ""
+    }
   },
   "testimonials": [
-    {
-      "quote": "The film became the centre of our entire launch. Bookings opened and didn't slow down for a month.",
-      "author": "Amara Vance",
-      "role": "Founder, Séra Skin"
-    },
     {
       "quote": "Every frame looked like the brand we always said we were. DIGI made it real — and it converted.",
       "author": "Idris Calloway",
       "role": "CMO, Aalto Resorts"
+    },
+    {
+      "quote": "Every frame captures the true essence of our brand. DIGI didn't just make a video; they built a digital ecosystem that made our premium wellness services feel inevitable.\"",
+      "role": "Marketing Manager ",
+      "author": "GFC"
     }
   ],
   "footer": {
     "tagline": "Beauty, Wellness & Hospitality Production. We make premium brands feel inevitable.",
-    "email": "hello@digi.studio",
-    "copyright": "© 2026 DIGI Studio. All rights reserved.",
+    "email": "hello@digi.co.th",
+    "copyright": "© 2026 DigiOne (Thailand) Co., Ltd. All rights reserved.",
     "sub": "Beauty · Wellness · Hospitality"
   }
 }
