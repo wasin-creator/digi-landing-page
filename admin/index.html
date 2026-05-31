@@ -6,6 +6,98 @@
   <title>DIGI — Content Editor</title>
 </head>
 <body>
+  <script>window.CMS_MANUAL_INIT = true;</script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+  CMS.init({
+    config: {
+      backend: {
+        name: 'github',
+        repo: 'wasin-creator/digi-landing-page',
+        branch: 'main',
+        base_url: 'https://digi-landing-deploy.vercel.app',
+        auth_endpoint: 'api/auth'
+      },
+      media_folder: 'assets/uploads',
+      public_folder: '/assets/uploads',
+      collections: [
+        {
+          name: 'content',
+          label: 'เนื้อหาเว็บไซต์',
+          files: [
+            {
+              file: 'content.json',
+              label: 'แก้ไขข้อความ',
+              name: 'main',
+              fields: [
+                {
+                  label: '🌐 SEO',
+                  name: 'site',
+                  widget: 'object',
+                  fields: [
+                    { label: 'ชื่อเว็บ (Tab title)', name: 'title', widget: 'string' },
+                    { label: 'คำอธิบาย', name: 'description', widget: 'string' }
+                  ]
+                },
+                {
+                  label: '🔝 Hero (ส่วนแรก)',
+                  name: 'hero',
+                  widget: 'object',
+                  fields: [
+                    { label: 'Tagline', name: 'tagline', widget: 'string' },
+                    { label: 'หัวข้อ บรรทัด 1', name: 'headline_line1', widget: 'string' },
+                    { label: 'หัวข้อ เน้น (italic)', name: 'headline_em', widget: 'string' },
+                    { label: 'หัวข้อ บรรทัด 2', name: 'headline_line2', widget: 'string' },
+                    { label: 'คำอธิบายย่อย', name: 'subtext', widget: 'text' },
+                    { label: 'ปุ่ม หลัก', name: 'cta_primary', widget: 'string' },
+                    { label: 'ปุ่ม รอง', name: 'cta_secondary', widget: 'string' }
+                  ]
+                },
+                {
+                  label: '📊 ตัวเลข (Stats)',
+                  name: 'stats',
+                  widget: 'list',
+                  fields: [
+                    { label: 'ตัวเลข', name: 'number', widget: 'string' },
+                    { label: 'คำอธิบาย', name: 'label', widget: 'string' }
+                  ]
+                },
+                {
+                  label: '🎬 ผลงาน (Work section)',
+                  name: 'work',
+                  widget: 'object',
+                  fields: [
+                    { label: 'หัวข้อ', name: 'heading', widget: 'string' },
+                    { label: 'คำอธิบาย', name: 'subheading', widget: 'string' }
+                  ]
+                },
+                {
+                  label: '💬 รีวิว (Testimonials)',
+                  name: 'testimonials',
+                  widget: 'list',
+                  fields: [
+                    { label: 'คำพูด', name: 'quote', widget: 'text' },
+                    { label: 'ชื่อ', name: 'author', widget: 'string' },
+                    { label: 'ตำแหน่ง', name: 'role', widget: 'string' }
+                  ]
+                },
+                {
+                  label: '🔻 Footer',
+                  name: 'footer',
+                  widget: 'object',
+                  fields: [
+                    { label: 'คำอธิบายบริษัท', name: 'tagline', widget: 'text' },
+                    { label: 'อีเมล', name: 'email', widget: 'string' },
+                    { label: 'Copyright', name: 'copyright', widget: 'string' }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  });
+  </script>
 </body>
 </html>
