@@ -3,7 +3,7 @@ backend:
   repo: wasin-creator/digi-landing-page
   branch: main
   auth_type: pkce
-  app_id: REPLACE_WITH_GITHUB_OAUTH_CLIENT_ID
+  app_id: Ov23lihAFNSfe1BLKwMb
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
