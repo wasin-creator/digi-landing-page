@@ -1,5 +1,13 @@
 {
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "headers": [
+    {
+      "source": "/admin/config.yml",
+      "headers": [
+        { "key": "Content-Type", "value": "text/yaml; charset=utf-8" }
+      ]
+    }
+  ]
 }
