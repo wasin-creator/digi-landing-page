@@ -2,8 +2,8 @@ backend:
   name: github
   repo: wasin-creator/digi-landing-page
   branch: main
-  auth_type: pkce
-  app_id: Ov23lihAFNSfe1BLKwMb
+  base_url: https://digi-landing-deploy.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
