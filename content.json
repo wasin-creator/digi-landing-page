@@ -86,6 +86,15 @@
       "desc": "The through-line that holds every asset together."
     }
   ],
+  "youtube": {
+    "heading": "YouTube Channel",
+    "view_all_url": "https://www.youtube.com/@digiproduction",
+    "videos": [
+      { "id": "", "title": "Behind the Campaign — Séra Skin Launch Film" },
+      { "id": "", "title": "How We Shoot Luxury Hospitality Content in 48 Hours" },
+      { "id": "", "title": "AI-Enhanced Beauty Production: Before & After" }
+    ]
+  },
   "stats": [
     {
       "number": "120+",
