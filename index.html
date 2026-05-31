@@ -276,19 +276,20 @@ image-slot {
 /* ══════════ TRUST / METRICS ══════════ */
 .trust { background: var(--navy-2); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
 .trust__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 56px; }
-.logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px 20px; align-items: center; }
-.logos span {
-  font-size: clamp(0.85rem, 1.3vw, 1.15rem); letter-spacing: 0.16em; text-transform: uppercase;
-  font-weight: 500; color: var(--on-dark-mut); text-align: center; opacity: 0.72;
-  transition: opacity 0.5s var(--ease), color 0.5s var(--ease); white-space: nowrap;
-}
-.logos span:hover { opacity: 1; color: var(--on-dark); }
+.logos { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); }
+.logos__track { display: flex; width: max-content; animation: logos-scroll 32s linear infinite; }
+.logos__track:hover { animation-play-state: paused; }
+.logos__inner { display: flex; align-items: center; gap: 60px; padding-right: 60px; }
+@keyframes logos-scroll { to { transform: translateX(-50%); } }
+.client-logo { height: 28px; width: auto; flex-shrink: 0; filter: brightness(0) invert(1); opacity: 0.45; transition: opacity 0.4s var(--ease); display: block; }
+.client-logo:hover { opacity: 0.85; }
+@media (prefers-reduced-motion: reduce) { .logos__track { animation: none; } .logos__inner { flex-wrap: wrap; gap: 36px; } }
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 80px; background: var(--line-dark); border: 1px solid var(--line-dark); }
 .metric { background: var(--navy-2); padding: 40px 30px; }
 .metric__n { font-size: clamp(2.4rem, 4.4vw, 3.8rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
 .metric__n em { font-style: normal; color: var(--coral); }
 .metric__l { margin-top: 14px; font-size: 0.82rem; color: var(--on-dark-mut); letter-spacing: 0.02em; line-height: 1.4; }
-@media (max-width: 880px) { .logos { grid-template-columns: repeat(3, 1fr); } .metrics { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 880px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
 
 /* ══════════ PORTFOLIO ══════════ */
 .work__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 48px; }
@@ -455,19 +456,43 @@ image-slot {
         <p class="eyebrow" data-reveal data-cms="trust.label">Trusted by brands that sell on feeling</p>
         <a class="tlink" href="#work" data-reveal>See the work <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <div class="logos" data-reveal>
-        <span>Maison Lumé</span>
-        <span>Séra Skin</span>
-        <span>Aalto Resorts</span>
-        <span>The Grove Clinic</span>
-        <span>Oshi</span>
-        <span>Verano</span>
-        <span>Lèon &amp; Co</span>
-        <span>Halcyon</span>
-        <span>Nué Aesthetics</span>
-        <span>Casa Pelo</span>
-        <span>Ember House</span>
-        <span>Studio Mara</span>
+      <div class="logos" data-reveal aria-label="Client logos">
+        <div class="logos__track">
+          <div class="logos__inner">
+            <img src="assets/clients/bounce.svg"           alt="Bounce"           class="client-logo">
+            <img src="assets/clients/british-red-cross.svg" alt="British Red Cross" class="client-logo">
+            <img src="assets/clients/comptoir-libanais.svg" alt="Comptoir Libanais" class="client-logo">
+            <img src="assets/clients/diageo.svg"            alt="Diageo"            class="client-logo">
+            <img src="assets/clients/jamie-oliver.svg"      alt="Jamie Oliver"      class="client-logo">
+            <img src="assets/clients/matchroom.svg"         alt="Matchroom"         class="client-logo">
+            <img src="assets/clients/penguin.svg"           alt="Penguin"           class="client-logo">
+            <img src="assets/clients/penhaligons.svg"       alt="Penhaligon's"      class="client-logo">
+            <img src="assets/clients/raw.svg"               alt="Raw"               class="client-logo">
+            <img src="assets/clients/saatchi.svg"           alt="Saatchi"           class="client-logo">
+            <img src="assets/clients/sonovate.svg"          alt="Sonovate"          class="client-logo">
+            <img src="assets/clients/stoli.svg"             alt="Stoli"             class="client-logo">
+            <img src="assets/clients/sym.svg"               alt="Sym"               class="client-logo">
+            <img src="assets/clients/tangerine.svg"         alt="Tangerine"         class="client-logo">
+            <img src="assets/clients/tribepad.svg"          alt="Tribepad"          class="client-logo">
+          </div>
+          <div class="logos__inner" aria-hidden="true">
+            <img src="assets/clients/bounce.svg"           alt="" class="client-logo">
+            <img src="assets/clients/british-red-cross.svg" alt="" class="client-logo">
+            <img src="assets/clients/comptoir-libanais.svg" alt="" class="client-logo">
+            <img src="assets/clients/diageo.svg"            alt="" class="client-logo">
+            <img src="assets/clients/jamie-oliver.svg"      alt="" class="client-logo">
+            <img src="assets/clients/matchroom.svg"         alt="" class="client-logo">
+            <img src="assets/clients/penguin.svg"           alt="" class="client-logo">
+            <img src="assets/clients/penhaligons.svg"       alt="" class="client-logo">
+            <img src="assets/clients/raw.svg"               alt="" class="client-logo">
+            <img src="assets/clients/saatchi.svg"           alt="" class="client-logo">
+            <img src="assets/clients/sonovate.svg"          alt="" class="client-logo">
+            <img src="assets/clients/stoli.svg"             alt="" class="client-logo">
+            <img src="assets/clients/sym.svg"               alt="" class="client-logo">
+            <img src="assets/clients/tangerine.svg"         alt="" class="client-logo">
+            <img src="assets/clients/tribepad.svg"          alt="" class="client-logo">
+          </div>
+        </div>
       </div>
       <div class="metrics">
         <div class="metric" data-reveal data-cms-stat="0"><div class="metric__n" data-cms-stat-n="0">240<em>+</em></div><div class="metric__l" data-cms-stat-l="0">Campaigns produced across beauty, wellness &amp; hospitality</div></div>
