@@ -27,16 +27,16 @@
   },
   "clients": [
     {
-      "name": "Bounce",
-      "logo": "/assets/clients/bounce.svg"
+      "name": "Revlon",
+      "logo": "/assets/uploads/revlon-logo.svg"
     },
     {
-      "name": "British Red Cross",
-      "logo": "/assets/clients/british-red-cross.svg"
+      "name": "Ultima II",
+      "logo": "/assets/uploads/logo-ultima-rev0125.png"
     },
     {
-      "name": "Comptoir Libanais",
-      "logo": "/assets/clients/comptoir-libanais.svg"
+      "name": "Banyan Tree Residences",
+      "logo": "/assets/uploads/banyan-tree-residences-100x30-px_0.png"
     },
     {
       "name": "Diageo",
