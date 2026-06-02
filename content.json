@@ -36,6 +36,23 @@
       "w5": "/assets/uploads/portfolio-w5-halcyon.jpg"
     }
   },
+  "clients": [
+    { "name": "Bounce",            "logo": "/assets/clients/bounce.svg" },
+    { "name": "British Red Cross", "logo": "/assets/clients/british-red-cross.svg" },
+    { "name": "Comptoir Libanais", "logo": "/assets/clients/comptoir-libanais.svg" },
+    { "name": "Diageo",            "logo": "/assets/clients/diageo.svg" },
+    { "name": "Jamie Oliver",      "logo": "/assets/clients/jamie-oliver.svg" },
+    { "name": "Matchroom",         "logo": "/assets/clients/matchroom.svg" },
+    { "name": "Penguin",           "logo": "/assets/clients/penguin.svg" },
+    { "name": "Penhaligon's",      "logo": "/assets/clients/penhaligons.svg" },
+    { "name": "Raw",               "logo": "/assets/clients/raw.svg" },
+    { "name": "Saatchi",           "logo": "/assets/clients/saatchi.svg" },
+    { "name": "Sonovate",          "logo": "/assets/clients/sonovate.svg" },
+    { "name": "Stoli",             "logo": "/assets/clients/stoli.svg" },
+    { "name": "Sym",               "logo": "/assets/clients/sym.svg" },
+    { "name": "Tangerine",         "logo": "/assets/clients/tangerine.svg" },
+    { "name": "Tribepad",          "logo": "/assets/clients/tribepad.svg" }
+  ],
   "testimonials": [
     {
       "quote": "Every frame looked like the brand we always said we were. DIGI made it real — and it converted.",

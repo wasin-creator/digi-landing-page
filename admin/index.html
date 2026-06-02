@@ -85,6 +85,17 @@
                   ]
                 },
                 {
+                  label: '🤝 โลโก้ลูกค้า (Client logos)',
+                  name: 'clients',
+                  widget: 'list',
+                  label_singular: 'โลโก้',
+                  hint: 'แถบโลโก้ที่เลื่อนอัตโนมัติ — เพิ่ม/ลบ/สลับลำดับได้ (แนะนำไฟล์ขาวหรือโมโนโครม .svg / .png พื้นโปร่ง เพราะระบบ render เป็นสีขาว)',
+                  fields: [
+                    { label: 'ชื่อ', name: 'name', widget: 'string' },
+                    { label: 'โลโก้ (.svg / .png)', name: 'logo', widget: 'file', required: false }
+                  ]
+                },
+                {
                   label: '🛠️ บริการ (Services)',
                   name: 'services',
                   widget: 'list',

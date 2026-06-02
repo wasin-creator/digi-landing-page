@@ -489,7 +489,7 @@ image-slot {
       </div>
       <div class="logos" data-reveal aria-label="Client logos">
         <div class="logos__track">
-          <div class="logos__inner">
+          <div class="logos__inner" id="logos-a">
             <img src="assets/clients/bounce.svg"           alt="Bounce"           class="client-logo">
             <img src="assets/clients/british-red-cross.svg" alt="British Red Cross" class="client-logo">
             <img src="assets/clients/comptoir-libanais.svg" alt="Comptoir Libanais" class="client-logo">
@@ -506,7 +506,7 @@ image-slot {
             <img src="assets/clients/tangerine.svg"         alt="Tangerine"         class="client-logo">
             <img src="assets/clients/tribepad.svg"          alt="Tribepad"          class="client-logo">
           </div>
-          <div class="logos__inner" aria-hidden="true">
+          <div class="logos__inner" id="logos-b" aria-hidden="true">
             <img src="assets/clients/bounce.svg"           alt="" class="client-logo">
             <img src="assets/clients/british-red-cross.svg" alt="" class="client-logo">
             <img src="assets/clients/comptoir-libanais.svg" alt="" class="client-logo">
@@ -955,6 +955,18 @@ fetch('/content.json').then(function(r){ return r.json(); }).then(function(c){
         slot.style.backgroundPosition = 'center';
       }
     });
+  }
+  /* Client logos (marquee) — from CMS */
+  if(c.clients && c.clients.length) {
+    var logoHtml = c.clients.map(function(cl) {
+      if(!cl || !cl.logo) return '';
+      var nm = String(cl.name || '').replace(/"/g, '&quot;');
+      return '<img src="' + cl.logo + '" alt="' + nm + '" class="client-logo">';
+    }).join('');
+    var la = document.getElementById('logos-a');
+    var lb = document.getElementById('logos-b');
+    if(la) la.innerHTML = logoHtml;
+    if(lb) lb.innerHTML = logoHtml.replace(/alt="[^"]*"/g, 'alt=""');
   }
   /* Services */
   if(c.services) {
