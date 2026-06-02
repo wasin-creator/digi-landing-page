@@ -928,17 +928,31 @@ fetch('/content.json').then(function(r){ return r.json(); }).then(function(c){
       if(r) r.textContent = t.role;
     });
   }
-  /* Work images */
+  /* Work media — supports image (background) or video (.mp4/.webm) */
   if(c.work && c.work.images) {
     ['w1','w2','w3','w4','w5'].forEach(function(id) {
       var url = c.work.images[id];
-      if(url) {
-        var slot = document.getElementById('digi-' + id);
-        if(slot) {
-          slot.style.backgroundImage = 'url(' + url + ')';
-          slot.style.backgroundSize = 'cover';
-          slot.style.backgroundPosition = 'center';
-        }
+      if(!url) return;
+      var slot = document.getElementById('digi-' + id);
+      if(!slot) return;
+      /* remove any previously injected video (re-render safety) */
+      var prev = slot.querySelector('video.work-video');
+      if(prev) prev.remove();
+      if(/\.(mp4|webm)(\?.*)?$/i.test(url)) {
+        slot.style.backgroundImage = 'none';
+        var v = document.createElement('video');
+        v.className = 'work-video';
+        v.src = url;
+        v.autoplay = true; v.loop = true; v.muted = true; v.defaultMuted = true;
+        v.playsInline = true; v.setAttribute('playsinline', ''); v.setAttribute('muted', '');
+        v.preload = 'metadata';
+        v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;';
+        slot.appendChild(v);
+        v.play().catch(function(){});
+      } else {
+        slot.style.backgroundImage = 'url(' + url + ')';
+        slot.style.backgroundSize = 'cover';
+        slot.style.backgroundPosition = 'center';
       }
     });
   }

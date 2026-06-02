@@ -70,15 +70,16 @@
                     { label: 'หัวข้อ', name: 'heading', widget: 'string' },
                     { label: 'คำอธิบาย', name: 'subheading', widget: 'string' },
                     {
-                      label: '🖼️ รูปภาพผลงาน',
+                      label: '🖼️ รูป / 🎬 วิดีโอ ผลงาน',
                       name: 'images',
                       widget: 'object',
+                      hint: 'อัปได้ทั้งรูป (.jpg .png .webp) และวิดีโอ (.mp4 .webm) — ลบได้โดยล้างช่อง',
                       fields: [
-                        { label: 'รูป 1 — Séra Skin', name: 'w1', widget: 'image', required: false },
-                        { label: 'รูป 2 — The Grove Clinic', name: 'w2', widget: 'image', required: false },
-                        { label: 'รูป 3 — Aalto Resorts', name: 'w3', widget: 'image', required: false },
-                        { label: 'รูป 4 — Casa Pelo', name: 'w4', widget: 'image', required: false },
-                        { label: 'รูป 5 — Halcyon', name: 'w5', widget: 'image', required: false }
+                        { label: 'ช่อง 1 — Séra Skin (รูป/วิดีโอ)', name: 'w1', widget: 'file', media_library: { config: { multiple: false } }, required: false },
+                        { label: 'ช่อง 2 — The Grove Clinic (รูป/วิดีโอ)', name: 'w2', widget: 'file', media_library: { config: { multiple: false } }, required: false },
+                        { label: 'ช่อง 3 — Aalto Resorts (รูป/วิดีโอ)', name: 'w3', widget: 'file', media_library: { config: { multiple: false } }, required: false },
+                        { label: 'ช่อง 4 — Casa Pelo (รูป/วิดีโอ)', name: 'w4', widget: 'file', media_library: { config: { multiple: false } }, required: false },
+                        { label: 'ช่อง 5 — Halcyon (รูป/วิดีโอ)', name: 'w5', widget: 'file', media_library: { config: { multiple: false } }, required: false }
                       ]
                     }
                   ]
